@@ -1,7 +1,10 @@
 #include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
+#include <unistd.h> /*para write*/
+#include <stdarg.h> /*para las macros va_...*/
+#include <stdlib.h> /*mara malloc  free*/
 #include "holberton.h"
+#include <string.h> /*para strlen - hay que poner nuestra funcion*/
+
 void print_char(va_list c, char *buf);
 void print_string(va_list d);
 void print_integer(va_list i);
@@ -38,7 +41,7 @@ int _printf(const char *format, ...)
         {
             i++;
             j = 0;
-            while (a_fun[j] != '\0')
+            while (a_fun[j].str != NULL)
             {
                 if (a_fun[j].str == format[i])
                 {
@@ -50,11 +53,11 @@ int _printf(const char *format, ...)
         buf[k] = format[i];
         k++;
         i++;
-		write(1, buf, strelen(buf));
+		write(1, buf, strlen(buf));
     }
 	len_buf = strlen(buf);
 	free(buf);
 	va_end(lista);
 
-	return(buf);
+	return(len_buf);
 }
