@@ -1,16 +1,22 @@
 #include <stdarg.h>
 #include "holberton.h"
+#include <stdio.h>
 
 /**
  * print_char - print type char
  * @c: character
  */
 
- void print_char(va_list c)
+ int print_char(va_list c, char *b)
  {
-    char *value;
-	*value = (char) va_arg(c, int);
-	funct_buf(value);
+	int i;
+    char value;
+
+	value = (char) va_arg(c, int);
+	printf("deberia %c\n", value);
+	if (value)
+ 		*b = value;
+	return (1);
  }
 
 /**
@@ -18,23 +24,27 @@
  * @s: string
  */
 
- void print_string(va_list s)
+ int print_string(va_list s, char *b)
  {
+	int i = 0;
 	char *value;
-	value = va_arg(s, char *);
+	value = (char *)va_arg(s, char *);
 
-	while (value)
+	while (*value)
 	{
-		funct_buf(value);
+		*b = *value;
 		value++;
+		b++;
+		i++;
 	}
+	return(i + 1);
  }
 /**
  * print_integer - print type char
  * @i: format
  * Return: integer
  *
-void print_integer(va_list i)
+char *print_integer(va_list i, char *b)
  {
 ​
  }*/

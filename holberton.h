@@ -2,25 +2,13 @@
 #define Holberton_h
 #include <stdarg.h>
 
-/**
- * array_of_functios - array con funciones de formato
- * @str: identificadores de formato
- * @f: funciones
- */
-
-typedef struct holberton
-{
-    char str;
-    void (*f)(va_list);
-} functions;
-
 /*PROTOTIPOS*/
 int _printf(const char *format, ...);
 
 /*funciones principales*/
-void print_char(va_list c);
-void print_string(va_list d);
-void print_integer(va_list i);
+int print_char(va_list c, char *b);
+int print_string(va_list d, char *b);
+char *print_integer(va_list i, char *b);
 
 /*Funciones auxiliares*/
 int _strlen(char *s);

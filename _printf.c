@@ -12,26 +12,20 @@
 
 int _printf(const char *format, ...)
 {
-    int i= 0;
-    functions a_fun[] = {
-        {'c', print_char},
-        {'s', print_string},
-     /* {'d', print_integer},
-        {"i", print_integer},*/
-        {'\0', NULL},
-        };
-    char *aux_format;
+    char *aux_format, *ptrbuf;
     va_list lista;
 
-    static char buf[1024];
-    static int j = 0;
-    static char *pfinal = buf + 1024;
-    static char *plibre = buf;
+    static char *buf;
+	int j = 0;
     int buf_len = 0;
 
 	va_start(lista, format);
-
+	buf = malloc(sizeof(char) * 1024);
+	if (!buf)
+		return (0);
 	aux_format = malloc(sizeof(char) * _strlenconst(format));
+	if (!aux_format)
+		return (0);
 	aux_format = _strcpy(aux_format, format);
 
     while (aux_format && *aux_format) /*While(format != NULL && format != '\0'*/
@@ -39,45 +33,30 @@ int _printf(const char *format, ...)
         if (*aux_format == '%')
         {
             aux_format++;
-			i = 0;
-           	while ((a_fun[i].str))
-	        {
-	        	if ((a_fun[i].str) == aux_format[0])
-	    		{
-		        	a_fun[i].f(lista);
-		        }
-		    i++;
-            }
+			switch (*aux_format)
+			{
+			case 'c':
+				j += print_char(lista, buf + j);
+				break;
+			case 's':
+				j += print_string(lista, buf + j);
+				break;
+			default:
+				break;
+			}
+
         }
 		else
 		{
-        	buf[j] = *aux_format;
-			plibre++;
+        	*(buf + j) = *aux_format;
     		j++;
 		}
 		aux_format++;
+		printf("hola2 %s\n", buf);
+
     }
 	write(1, buf, _strlen(buf));
 	buf_len = _strlen(buf);
+	free(buf);
 	return(buf_len);
-}
-
-int funct_buf(char *s)
-{
-    static char buf[1024];
-    static int i = 0;
-    static char *pfinal = buf + 1024;
-    static char *plibre = buf;
-    int buf_len = 0;
-
-    buf[i] = *s;
-    plibre++;
-    i++;
-    if (plibre == pfinal)
-    {
-        plibre = buf;
-        *plibre = '\0';
-    }
-    buf_len = _strlen(buf);
-    return (buf_len);
 }
