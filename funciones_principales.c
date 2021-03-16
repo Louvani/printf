@@ -25,14 +25,14 @@ int print_char(va_list c, char *b)
  * @b: pointer to buf
  * Return: number of characters
  */
-
 int print_string(va_list s, char *b)
 {
 	int i = 0;
 	char *value;
 
 	value = (char *)va_arg(s, char *);
-
+	if (value == NULL)
+		value = "(null)";
 	while (value && *value)
 	{
 		*b = *value;

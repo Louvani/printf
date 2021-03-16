@@ -9,6 +9,7 @@
  * @format: string con los formatos a usar
  * Return: the number of characters printed
  */
+
 int _printf(const char *format, ...)
 {
 	char *aux_format;
@@ -38,13 +39,19 @@ int _printf(const char *format, ...)
 		case 's':
 			j += print_string(lista, buf + j);
 			break;
-			case 'd':
+		case 'd':
 			j += print_integer(lista, buf + j);
 			break;
-			case 'i':
+		case 'i':
 			j += print_integer(lista, buf + j);
+			break;
+		case '%':
+			*(buf + j) = '%';
+			j++;
 			break;
 		default:
+			*(buf + j) = *aux_format;
+			j++;
 			break;
 			}
 		aux_format++;
