@@ -5,9 +5,7 @@
 #include "holberton.h"
 #include <string.h> /*para strlen - hay que poner nuestra funcion*/
 
-void print_char(va_list c, char *buf);
-void print_string(va_list d);
-void print_integer(va_list i);
+
 
 /**
  * _printf - owr own printf function
@@ -17,47 +15,64 @@ void print_integer(va_list i);
 
 int _printf(const char *format, ...)
 {
-    char *buf;
-    int i, j, k;
-    int len_buf = 0;
-    va_list lista;
-    functions a_fun[] = {
-        {"c", print_char},
-        {"s", print_string},
-        {"d", print_integer},
-        {"i", print_integer},
-        {NULL, NULL}};
-
-    i = 0;
-    k = 0;
+	int i= 0;
+	functions a_fun[] = {
+		{'c', print_char},
+		{'s', print_string},
+		/* {'d', print_integer
+	},
+        {"i", print_integer},*/
+		{'\0', NULL},
+	};
+	char *aux_format;
+	va_list lista;
 
 	va_start(lista, format);
 
-    buf = malloc(sizeof(char) * 1024);
+	while (aux_format && *aux_format) /*While(format != NULL && format != '\0'*/
+	{
+		if (*aux_format == '%')
+		{
+			aux_format++;
+			while ((a_fun[i].str))
+			{
+				if ((a_fun[i].str) == aux_format[0])
+				{
+					a_fun[i].f(lista);
+				}
+				i++;
+				            
+			}
+			        
+		}
 
-    while (format[i] != '\0')
-    {
-        if (format[i] == '%')
-        {
-            i++;
-            j = 0;
-            while (a_fun[j].str != NULL)
-            {
-                if (a_fun[j].str == format[i])
-                {
-                    a_fun[j].f(lista, buf[k]);
-                }
-                j++;
-            }
-        }
-        buf[k] = format[i];
-        k++;
-        i++;
-		write(1, buf, strlen(buf));
-    }
-	len_buf = strlen(buf);
-	free(buf);
-	va_end(lista);
+		funct_buf(aux_format);
+		aux_format++;
+		    
+	}
 
-	return(len_buf);
+	return(0);
+	
+}
+
+int funct_buf(char *s)
+{
+	static char buf[1024];
+	static int i = 0;
+	static char *pfinal = buf + 1024;
+	static char *plibre = buf;
+	int buf_len = 0;
+
+	buf[i] = *s;
+	plibre++;
+	i++;
+	if (plibre == pfinal)
+	{
+		plibre = buf;
+		*plibre = '\0';
+		    
+	}
+	buf_len = _strlen(buf);
+	return (buf_len);
+	
 }
