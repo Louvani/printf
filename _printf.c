@@ -41,6 +41,9 @@ int _printf(const char *format, ...)
 			case 'd':
 			j += print_integer(lista, buf + j);
 			break;
+			case 'i':
+			j += print_integer(lista, buf + j);
+			break;
 		default:
 			break;
 			}
