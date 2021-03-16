@@ -60,3 +60,45 @@ char *_strcpy(char *dest, const char *src)
 	}
 	return (dest);
 }
+
+/**
+ *getNumberOfDigit - Give us the number of digits in one number
+ *@n: bring the value from print_number
+ *Return: The number of Digits.
+ */
+
+int getNumberOfDigit(int n)
+{
+	int nAux = n;
+	int numDigits = 0;
+
+	do {
+		numDigits++;
+		nAux /= 10;
+	} while (nAux != 0);
+	return (numDigits);
+}
+/**
+ *power - give us the most near power of n.
+ *@x: always 10
+ *@y: digitNumber - 1
+ *Return: power of the digits
+ */
+
+int power(int x, int y)
+{
+	int power = x;
+	int i;
+
+	if (y == 0)
+	{
+		return (1);
+	}
+
+	for (i = y; i > 1; i--)
+	{
+		power = power * x;
+	}
+	return (power);
+}
+

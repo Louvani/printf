@@ -48,3 +48,31 @@ int print_string(va_list s, char *b)
  * @b: pointer to buf
  * Return: number of characters
  */
+int print_integer(va_list i, char *b)
+{
+	int j = 0;
+	int value = va_arg(i, int);
+	int digitNumber = getNumberOfDigit(value);
+	int divider = power(10, digitNumber - 1);
+	unsigned int abs_n = absolute(value);
+	int currentDigit = abs_n / divider;
+
+	if (value < 0)
+	{
+		*b = '-';
+		b++;
+		j++;
+	}
+
+	do {
+		currentDigit = abs_n / divider;
+		*b = (currentDigit + 48);
+		b++;
+		j++;
+		abs_n = abs_n % divider;
+		divider = divider / 10;
+	} while (divider != 0);
+
+	return (j);
+}
+

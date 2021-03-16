@@ -38,6 +38,9 @@ int _printf(const char *format, ...)
 		case 's':
 			j += print_string(lista, buf + j);
 			break;
+			case 'd':
+			j += print_integer(lista, buf + j);
+			break;
 		default:
 			break;
 			}
