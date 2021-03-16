@@ -13,7 +13,6 @@
     char value;
 
 	value = (char) va_arg(c, int);
-	printf("deberia %c\n", value);
 	if (value)
  		*b = value;
 	return (1);
@@ -37,7 +36,7 @@
 		b++;
 		i++;
 	}
-	return(i + 1);
+	return(i);
  }
 /**
  * print_integer - print type char

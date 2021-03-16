@@ -44,17 +44,15 @@ int _printf(const char *format, ...)
 			default:
 				break;
 			}
-
-        }
-		else
-		{
-        	*(buf + j) = *aux_format;
-    		j++;
+            aux_format++;
 		}
+
+        *(buf + j) = *aux_format;
+    	j++;
 		aux_format++;
-		printf("hola2 %s\n", buf);
 
     }
+	
 	write(1, buf, _strlen(buf));
 	buf_len = _strlen(buf);
 	free(buf);
