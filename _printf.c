@@ -23,28 +23,43 @@ int _printf(const char *format, ...)
     char *aux_format;
     va_list lista;
 
+    static char buf[1024];
+    static int j = 0;
+    static char *pfinal = buf + 1024;
+    static char *plibre = buf;
+    int buf_len = 0;
+
 	va_start(lista, format);
+
+	aux_format = malloc(sizeof(char) * _strlenconst(format));
+	aux_format = _strcpy(aux_format, format);
 
     while (aux_format && *aux_format) /*While(format != NULL && format != '\0'*/
     {
         if (*aux_format == '%')
         {
             aux_format++;
+			i = 0;
            	while ((a_fun[i].str))
 	        {
 	        	if ((a_fun[i].str) == aux_format[0])
-	        	{
+	    		{
 		        	a_fun[i].f(lista);
 		        }
 		    i++;
             }
         }
-
-        funct_buf(aux_format);
-        aux_format++;
+		else
+		{
+        	buf[j] = *aux_format;
+			plibre++;
+    		j++;
+		}
+		aux_format++;
     }
-
-	return(0);
+	write(1, buf, _strlen(buf));
+	buf_len = _strlen(buf);
+	return(buf_len);
 }
 
 int funct_buf(char *s)

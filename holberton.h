@@ -1,5 +1,5 @@
 #ifndef HOLBERTON_H
-#define HOLBERTON_H
+#define Holberton_h
 #include <stdarg.h>
 
 /**
@@ -24,6 +24,8 @@ void print_integer(va_list i);
 
 /*Funciones auxiliares*/
 int _strlen(char *s);
+char *_strcpy(char *dest, const char *src);
+int _strlenconst(const char *s);
 /*void (get_op_funct(const char format[]))(va_list);*/
 int funct_buf(char *s);
 
