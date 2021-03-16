@@ -1,10 +1,9 @@
 #ifndef HOLBERTON_H
-#define Holberton_h
+#define HOLBERTON_H
 #include <stdarg.h>
 
 /*PROTOTIPOS*/
 int _printf(const char *format, ...);
-
 /*funciones principales*/
 int print_char(va_list c, char *b);
 int print_string(va_list d, char *b);
