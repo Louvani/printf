@@ -6,21 +6,20 @@
  * @c: character
  */
 
-void print_char(va_list c)
-{
-	char *value;
+ void print_char(va_list c)
+ {
+    char *value;
 	*value = (char) va_arg(c, int);
 	funct_buf(value);
-	 
-}
+ }
 
 /**
  * print_string - prints string
  * @s: string
  */
 
-void print_string(va_list s)
-{
+ void print_string(va_list s)
+ {
 	char *value;
 	value = va_arg(s, char *);
 
@@ -28,10 +27,8 @@ void print_string(va_list s)
 	{
 		funct_buf(value);
 		value++;
-		
 	}
-	 
-}
+ }
 /**
  * print_integer - print type char
  * @i: format
@@ -40,5 +37,4 @@ void print_string(va_list s)
 void print_integer(va_list i)
  {
 ​
- 
-}*/
+ }*/
