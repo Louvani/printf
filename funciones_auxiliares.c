@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
+/**
+ * _strlen - function that copies the string from src to dest.
+ * @s: pointer to p. will recive the copy of src
+ * Return: Always l
+ */
 
 int _strlen(char *s)
 {
@@ -15,6 +20,12 @@ int _strlen(char *s)
 	}
 	return (l);
 }
+
+/**
+ * _strlenconst - function that copies the string from src to dest.
+ * @s: pointer to p. will recive the copy of src
+ * Return: Always l
+ */
 int _strlenconst(const char *s)
 {
 	int l;
@@ -49,24 +60,3 @@ char *_strcpy(char *dest, const char *src)
 	}
 	return (dest);
 }
-
-/*void (get_op_funct(const char format[]))(va_list l)
-{
-	int i;
-	functions a_fun[] = {
-        {'c', print_char},
-        {'s', print_string},
-      {'d', print_integer},
-        {"i", print_integer},
-    /*    {'\0', NULL}
-        };
-	i = 0;*/
-/*	while ((a_fun[i].str))
-	{
-		if ((a_fun[i].str) == format[0])
-		{
-			return (a_fun[i].f);
-		}
-		i++;
-	}
-}*/
