@@ -1,12 +1,12 @@
 .TH man 3 "Mar 16, 2021" "1.0" "_printf man page"
-.SH NOMBRE
+.SH NAME
 .B _printf()
 int _printf(const char *format, ...);
 Prints to standard output under the control
 .SH SYNOPSIS
 In this function we use our header file #include "holberton.h"
-.SH DESCRIPCIÓN
-the  function _printf() that produces output according to a given format., 
+.SH DESCRIPTION
+the  function _printf() that produces output according to a given format.
 .SH Return value
 On successful return, these functions return the number of characters printed, excluding the null byte used to end output to strings.
 .SH format
@@ -19,7 +19,7 @@ The format string is composed of zero or more directives. You need to handle the
 .TP
 .B s
 To be used to print strings
-..TP
+.TP
 .B d, i
 To print integers of max and min size of an int type
 .TP
@@ -30,7 +30,7 @@ print user data, where name and occupation are string pointers and age is an int
 
 #include "holberton.h"
 
-_printf("%s, %s %d/\n", nombre, ocupacion, edad);
+_printf("%s, %s %d/\n", name, occupation, age);
 .SH SEE ALSO
 .I printf(3)
 .SH BUGS
