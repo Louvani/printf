@@ -1,0 +1,41 @@
+.TH man 3 "Mar 16, 2021" "1.0" "_printf man page"
+.SH NOMBRE
+.B _printf()
+int _printf(const char *format, ...);
+Prints to standard output under the control
+.SH SYNOPSIS
+In this function we use our header file #include "holberton.h"
+.SH DESCRIPCIÓN
+the  function _printf() that produces output according to a given format., 
+.SH Return value
+On successful return, these functions return the number of characters printed, excluding the null byte used to end output to strings.
+.SH format
+this format specifies how the elements should be converted to generate the output.
+.SH Format of the format string
+The format string is composed of zero or more directives. You need to handle the following conversion specifiers:
+.TP
+.BR c
+ To be used to print characters
+.TP
+.B s
+To be used to print strings
+..TP
+.B d, i
+To print integers of max and min size of an int type
+.TP
+.B %
+denotes the beginning of the format mark, To use _printf, you must use the characters specified in format preceded by the% symbol.
+.SH EXAMPLE
+print user data, where name and occupation are string pointers and age is an integer:
+
+#include "holberton.h"
+
+_printf("%s, %s %d/\n", nombre, ocupacion, edad);
+.SH SEE ALSO
+.I printf(3)
+.SH BUGS
+No known bugs.
+
+
+.SH AUTHOR
+Puula Louvani, Sebastian Cardona, Dania Puertas
