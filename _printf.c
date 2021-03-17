@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 	char *aux_format;
 	va_list lista;
 	static char *buf;
-	int j = 0;
+	int i = 0, j = 0;
 	int buf_len = 0;
 
 	va_start(lista, format);
@@ -26,12 +26,12 @@ int _printf(const char *format, ...)
 	if (!aux_format)
 		return (0);
 	aux_format = _strcpy(aux_format, format);
-	while (aux_format && *aux_format) /*While(format != NULL && format != '\0'*/
+	while (aux_format && aux_format[i]) /*While(format != NULL && format != '\0'*/
 	{
-		if (*aux_format == '%')
+		if (aux_format[i] == '%')
 			{
-	    aux_format++;
-		switch (*aux_format)
+	    i++;
+		switch (aux_format[i])
 			{
 		case 'c':
 			j += print_char(lista, buf + j);
@@ -50,18 +50,19 @@ int _printf(const char *format, ...)
 			j++;
 			break;
 		default:
-			*(buf + j) = *aux_format;
+			*(buf + j) = aux_format[i];
 			j++;
 			break;
 			}
-		aux_format++;
+		i++;
 			}
-	*(buf + j) = *aux_format;
+	*(buf + j) = aux_format[i];
 	j++;
-	aux_format++;
+	i++;
 	}
 	write(1, buf, _strlen(buf));
 	buf_len = _strlen(buf);
 	free(buf);
+	free(aux_format);
 	return (buf_len);
 }
