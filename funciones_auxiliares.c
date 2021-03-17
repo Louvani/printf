@@ -4,13 +4,13 @@
 
 /**
  * _strlen - function that copies the string from src to dest.
- * @s: pointer to p. will recive the copy of src
+ * @s: pointer to string to check the lenght
  * Return: Always l
  */
 
 int _strlen(char *s)
 {
-	int l;
+	int l; /*keep de lenght of a string*/
 
 	l = 0;
 	while (*s != '\0')
@@ -23,7 +23,7 @@ int _strlen(char *s)
 
 /**
  * _strlenconst - function that copies the string from src to dest.
- * @s: pointer to p. will recive the copy of src
+ * @s: pointer to string to check the lenght of a constant string.
  * Return: Always l
  */
 int _strlenconst(const char *s)
@@ -40,8 +40,8 @@ int _strlenconst(const char *s)
 }
 /**
  * _strcpy - function that copies the string from src to dest.
- * @dest: pointer to p. will recive the copy of src
- * @src: source point to s1.
+ * @dest: pointer to variable that will recive the copy of src
+ * @src: source point to string to be copied.
  * Return: Always dest
  */
 char *_strcpy(char *dest, const char *src)
@@ -63,7 +63,7 @@ char *_strcpy(char *dest, const char *src)
 
 /**
  *getNumberOfDigit - Give us the number of digits in one number
- *@n: bring the value from print_number
+ *@n: integer to count digits
  *Return: The number of Digits.
  */
 

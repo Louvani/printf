@@ -22,8 +22,10 @@ int _printf(const char *format, ...)
 	buf = malloc(sizeof(char) * 1024);
 	if (!buf)
 		return (0);
-	aux_format = _strcpy(aux_format, format);
-	/*Aux_format allocate memory for the copy of format*/
+	aux_format = malloc(sizeof(char) * _strlenconst(format));
+    	if (aux_format == NULL)
+       		return (0);
+	aux_format = _strcpy(aux_format, format); /*Aux_format copy of format*/
 
 	while (aux_format && aux_format[i]) /*(format != NULL && format != '\0')*/
 	{
@@ -49,6 +51,8 @@ int _printf(const char *format, ...)
 			j++;
 			break;
 		default:
+			*(buf + j) = '%';
+			j++;
 			*(buf + j) = aux_format[i];
 			j++;
 			break;
@@ -59,8 +63,9 @@ int _printf(const char *format, ...)
 		j++;
 		i++;
 	}
-	write(1, buf, _strlen(buf)); /*Only one writ in all functión*/
+	write(1, buf, _strlen(buf)); /*Only one write in all functión*/
 	buf_len = _strlen(buf);
+	va_end(lista);
 	free(buf);
 	free(aux_format);
 	return (buf_len);

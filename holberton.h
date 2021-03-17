@@ -1,7 +1,6 @@
 #ifndef HOLBERTON_H
 #define HOLBERTON_H
 #include <stdarg.h>
-#define ABS(X) ((X < 0) ? ((X) * (-1)) : (X))
 
 /*PROTOTIPOS*/
 int _printf(const char *format, ...);
