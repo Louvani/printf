@@ -59,10 +59,10 @@ int _printf(const char *format, ...)
 		j++;
 		i++;
 	}
+	va_end(lista);
 	write(1, buf, _strlen(buf)); /*Only one writ in all functión*/
 	buf_len = _strlen(buf);
 	free(buf);
 	free(aux_format);
-	va_end(lista);
 	return (buf_len);
 }
