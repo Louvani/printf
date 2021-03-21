@@ -22,9 +22,10 @@ int _printf(const char *format, ...)
 	buf = malloc(sizeof(char) * 1024);
 	if (!buf)
 		return (0);
+	
 	aux_format = malloc(sizeof(char) * _strlenconst(format));
-    	if (aux_format == NULL)
-       		return (0);
+	if (aux_format == NULL)
+		return (0);
 	aux_format = _strcpy(aux_format, format); /*Aux_format copy of format*/
 
 	while (aux_format && aux_format[i]) /*(format != NULL && format != '\0')*/
@@ -46,6 +47,9 @@ int _printf(const char *format, ...)
 		case 'i':
 			j += print_integer(lista, buf + j);
 			break;
+		case 'b':
+			j += print_binary(lista, buf + j);
+			break;
 		case '%':
 			*(buf + j) = '%';
 			j++;
@@ -57,7 +61,7 @@ int _printf(const char *format, ...)
 			j++;
 			break;
 			}
-		i++;
+			i++;
 			}
 		*(buf + j) = aux_format[i];
 		j++;
@@ -67,6 +71,5 @@ int _printf(const char *format, ...)
 	buf_len = _strlen(buf);
 	va_end(lista);
 	free(buf);
-	free(aux_format);
 	return (buf_len);
 }

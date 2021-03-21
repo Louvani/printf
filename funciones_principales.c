@@ -2,6 +2,7 @@
 #include "holberton.h"
 #include <stdio.h>
 
+
 /**
  * print_char - print type char
  * @c: character
@@ -76,3 +77,44 @@ int print_integer(va_list i, char *b)
 	return (j);
 }
 
+int print_binary(va_list i, char *b)
+{
+	int j = 0;
+	int value = va_arg(i, int);
+	unsigned int abs_n = absolute(value);
+	char str_binary[1024] ;
+	int counter_str = 0;
+
+	if (value < 0)
+	{
+		*b = '-';
+		b++;
+		j++;
+	}
+	if (abs_n > 0)
+		while (abs_n > 0)
+		{
+			if (abs_n % 2 == 0)
+			{
+				printf("%d\n", abs_n % 2);
+				str_binary[counter_str] = '0';
+				counter_str++;
+				printf("%s\n", str_binary);
+			}
+			else if (abs_n % 2 == 1)
+			{
+				str_binary[counter_str] = '1';
+				counter_str++;
+			}
+			abs_n = abs_n / 2;
+		}
+
+	while (counter_str == 0)
+	{
+		*b = str_binary[counter_str];
+		counter_str--;
+		b++;
+		j++;
+	}
+	return (j);
+}

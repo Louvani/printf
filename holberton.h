@@ -8,6 +8,7 @@ int _printf(const char *format, ...);
 int print_char(va_list c, char *b);
 int print_string(va_list d, char *b);
 int print_integer(va_list i, char *b);
+int print_binary(va_list i, char *b);
 
 /*Funciones auxiliares*/
 int _strlen(char *s);
